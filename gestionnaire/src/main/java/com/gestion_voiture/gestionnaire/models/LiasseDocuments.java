@@ -22,4 +22,12 @@ public class LiasseDocuments {
     public void ajouteDocument(Document doc) {
         this.documents.add(doc);
     }
+
+    public Boolean supprimerDocument(Document doc){
+        return this.documents.remove(doc);
+    }
+
+    public List<Document>listerDocuments(){
+        return this.documents;
+    }
 }
