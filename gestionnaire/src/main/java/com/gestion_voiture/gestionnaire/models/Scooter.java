@@ -5,6 +5,6 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Scooter {
-    
+public abstract class Scooter extends Vehicule {
+    private Integer cylindree;
 }

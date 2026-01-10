@@ -1,6 +1,6 @@
 package com.gestion_voiture.gestionnaire.models;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,25 +8,17 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
-import jakarta.persistence.ManyToMany;
 import lombok.Data;
 
 @Entity
 @Data
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Vehicule {
+public abstract class Document {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String reference;
-    private String marque;
-    private String modele;
-    private Double prixBase;
+    private String nom;
+    private LocalDateTime dateCreation;
 
-    @ManyToMany
-    private List<Option> options;
-
-    public abstract Double calculePrix();
-
-    public abstract String getDescription();
+    public abstract String genereContenu();
 }
