@@ -1,5 +1,9 @@
 package com.gestion_voiture.gestionnaire.dto;
 
-public class VehiculeResultDTO {
-    
+import lombok.Data;
+
+@Data
+public class VehiculeResultDTO extends VehiculeDTO {
+    private Long id;
+    private String description;
 }

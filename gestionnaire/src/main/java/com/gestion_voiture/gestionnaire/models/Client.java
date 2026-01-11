@@ -17,6 +17,7 @@ public abstract class Client {
     private Long id;
     private String nom;
     private String email;
+    private String telephone;
 
     public void ajouteFiliale(Client filiale) {
         throw new UnsupportedOperationException("Non applicable pour ce type de client");

@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.gestion_voiture.gestionnaire.models.Enum.EtatCommande;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -30,7 +32,7 @@ public abstract class Commande {
     private String paysLivraison;
 
     @Enumerated(EnumType.STRING)
-    private EtatCommande etat;
+    private EtatCommande etat = EtatCommande.EN_COURS;
     
     private Double montantTotal;
 
