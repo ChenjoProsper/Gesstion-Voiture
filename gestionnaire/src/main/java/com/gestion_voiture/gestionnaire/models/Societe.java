@@ -5,11 +5,13 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 
 @Entity
 public class Societe extends Client {
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "parent_id")
     private List<Client> filiales = new ArrayList<>();
 
     @Override

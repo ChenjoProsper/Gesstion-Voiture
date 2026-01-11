@@ -26,6 +26,16 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public ClientResultDTO creerClient(ClientDTO dto) {
         Client client = clientMapper.toEntity(dto);
+
+    if (dto.getParentId() != null) {
+
+        Client parent = clientRepository.findById(dto.getParentId())
+                .orElseThrow(() -> new RuntimeException("Société mère introuvable"));
+
+        parent.ajouteFiliale(client);
+    
+    }
+
         return clientMapper.toDto(clientRepository.save(client));
     }
 
