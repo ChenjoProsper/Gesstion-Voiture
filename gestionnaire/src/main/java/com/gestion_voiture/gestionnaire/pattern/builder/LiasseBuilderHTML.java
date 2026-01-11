@@ -1,4 +1,4 @@
-package com.gestion_voiture.gestionnaire.patterns.builder;
+package com.gestion_voiture.gestionnaire.pattern.builder;
 
 import com.gestion_voiture.gestionnaire.models.*;
 

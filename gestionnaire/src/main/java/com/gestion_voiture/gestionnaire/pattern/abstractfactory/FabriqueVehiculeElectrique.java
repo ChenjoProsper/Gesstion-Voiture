@@ -1,4 +1,4 @@
-package com.gestion_voiture.gestionnaire.patterns.abstractfactory;
+package com.gestion_voiture.gestionnaire.pattern.abstractfactory;
 
 import com.gestion_voiture.gestionnaire.models.*;
 

@@ -1,4 +1,4 @@
-package com.gestion_voiture.gestionnaire.patterns.factory;
+package com.gestion_voiture.gestionnaire.pattern.factory;
 
 import com.gestion_voiture.gestionnaire.models.Commande;
 import com.gestion_voiture.gestionnaire.models.CommandeComptant;
