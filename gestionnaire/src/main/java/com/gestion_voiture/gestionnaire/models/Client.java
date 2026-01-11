@@ -22,4 +22,6 @@ public abstract class Client {
     public void ajouteFiliale(Client filiale) {
         throw new UnsupportedOperationException("Non applicable pour ce type de client");
     }
+  
+
 }
