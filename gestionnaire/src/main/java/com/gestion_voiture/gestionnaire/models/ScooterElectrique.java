@@ -11,7 +11,7 @@ public class ScooterElectrique extends Scooter {
 
     @Override
     public String getDescription() {
-        return String.format("Scooter Electrique %s %s - Cylindrée: %d cc. Prix de base: %.2f €", 
+        return String.format("Scooter Electrique %s %s - Cylindrée: %d cc. Prix de base: %.2f FCFA", 
                 getMarque(), getModele(), getCylindree(), getPrixBase());
     }
 }

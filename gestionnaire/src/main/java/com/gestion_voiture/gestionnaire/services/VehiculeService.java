@@ -11,4 +11,6 @@ import com.gestion_voiture.gestionnaire.dto.VehiculeResultDTO;
 public interface VehiculeService {
     VehiculeResultDTO ajouterVehicule(VehiculeDTO dto);
     List<VehiculeResultDTO> listerCatalogue();
+    VehiculeResultDTO ajouterOption(Long vehiculeId, Long optionId);
+    public Double calculerPrixReel(Long vehiculeId, List<Long> optionsIds);
 }

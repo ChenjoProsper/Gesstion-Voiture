@@ -11,7 +11,7 @@ public class AutoEssence extends Automobile {
 
     @Override
     public String getDescription() {
-        return String.format("Automobile Essence %s %s - %d portes. Prix de base: %.2f €", 
+        return String.format("Automobile Essence %s %s - %d portes. Prix de base: %.2f FCFA", 
                 getMarque(), getModele(), getNombrePortes(), getPrixBase());
     }
 }

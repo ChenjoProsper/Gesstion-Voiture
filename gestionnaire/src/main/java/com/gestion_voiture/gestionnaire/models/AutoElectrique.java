@@ -11,7 +11,7 @@ public class AutoElectrique extends Automobile {
 
     @Override
     public String getDescription() {
-        return String.format("Automobile Électrique %s %s - %d portes. Prix de base: %.2f €", 
+        return String.format("Automobile Électrique %s %s - %d portes. Prix de base: %.2f FCFA", 
                 getMarque(), getModele(), getNombrePortes(), getPrixBase());
     }
 }

@@ -20,7 +20,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("api/v1/client")
+@RequestMapping("api/client")
 @Tag(name="clients", description = "gestion des clients")
 @RequiredArgsConstructor
 public class ClientController {

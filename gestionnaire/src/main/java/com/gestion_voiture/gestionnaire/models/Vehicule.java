@@ -2,6 +2,8 @@ package com.gestion_voiture.gestionnaire.models;
 
 import java.util.List;
 
+import com.gestion_voiture.gestionnaire.pattern.decorator.ComposantVehicule;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,7 +16,7 @@ import lombok.Data;
 @Entity
 @Data
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Vehicule {
+public abstract class Vehicule implements ComposantVehicule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,4 +31,8 @@ public abstract class Vehicule {
     public abstract Double calculePrix();
 
     public abstract String getDescription();
+
+    @ManyToMany(mappedBy = "vehicules")
+    private List<Commande> commandes;
+
 }
