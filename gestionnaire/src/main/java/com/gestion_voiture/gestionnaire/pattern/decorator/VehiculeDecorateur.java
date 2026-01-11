@@ -1,8 +1,5 @@
 package com.gestion_voiture.gestionnaire.pattern.decorator;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public abstract class VehiculeDecorateur implements ComposantVehicule {
     protected ComposantVehicule vehiculeDecore;
 
