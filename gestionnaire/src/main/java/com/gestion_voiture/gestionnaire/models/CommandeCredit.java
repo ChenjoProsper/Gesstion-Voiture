@@ -13,4 +13,9 @@ public class CommandeCredit extends Commande {
         return montant * (1 + tauxInteret);
     }
 
+    public void setTauxInteret(Double tauxInteret) {
+        this.tauxInteret = tauxInteret;
+    }
+
+
 }

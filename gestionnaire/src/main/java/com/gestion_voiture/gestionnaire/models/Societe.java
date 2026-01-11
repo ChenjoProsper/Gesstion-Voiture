@@ -16,4 +16,7 @@ public class Societe extends Client {
     public void ajouteFiliale(Client filiale) {
         this.filiales.add(filiale);
     }
+
+ 
+
 }
