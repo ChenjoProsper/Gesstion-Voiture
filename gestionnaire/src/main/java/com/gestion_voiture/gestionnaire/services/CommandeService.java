@@ -13,5 +13,5 @@ public interface CommandeService {
     
     public CommandeResultDTO passerCommande(CommandeDTO dto);
     public Double calculerPrixFinal(Long commandeId, Map<Long, List<Long>> optionsParVehicule);
-    public CommandeResultDTO validerCommande(Long commandeId);
+    public void validerCommande(Long commandeId);
 }

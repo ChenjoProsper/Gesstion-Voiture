@@ -32,10 +32,9 @@ public class CommandeServiceImpl implements CommandeService {
     private final CommandeRepository commandeRepository;
     private final ClientRepository clientRepository;
     private final VehiculeRepository vehiculeRepository;
+    private final ServiceLiasse serviceLiasse;
     private final CommandeMapper commandeMapper;
     private final OptionRepository optionRepository;
-
-    private final com.gestion_voiture.gestionnaire.pattern.observer.ServiceImmatriculation serviceImmatriculation;
 
     @Override
     @Transactional
@@ -82,18 +81,17 @@ public class CommandeServiceImpl implements CommandeService {
         return total;
     }
 
+
     @Override
     @Transactional
-    public CommandeResultDTO validerCommande(Long id) {
+    public void validerCommande(Long id) {
         Commande commande = commandeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Commande introuvable"));
 
-        commande.ajouterObservateur(serviceImmatriculation);
+        commande.ajouterObservateur(serviceLiasse);
 
-        commande.setEtat(EtatCommande.VALIDE); 
+        commande.setEtat(EtatCommande.VALIDE);
 
-        Commande saved = commandeRepository.save(commande);
-        
-        return commandeMapper.toDto(saved);
+        commandeRepository.save(commande);
     }
 }

@@ -26,10 +26,10 @@ public class CommandeController {
     }
 
     @PutMapping("/{id}/valider")
-    @Operation(summary = "Valider la commande (Pattern Observer : déclenche l'immatriculation)")
-    public CommandeResultDTO validerCommande(@PathVariable Long id) {
-        // Le service va attacher l'observateur et changer l'état
-        return commandeService.validerCommande(id);
+    @Operation(summary = "valider une commande (passe à l'état VALIDE et génère la liasse de documents)")
+    public String valider(@PathVariable Long id) {
+        commandeService.validerCommande(id);
+        return "Commande validée et liasse générée.";
     }
 
     @PostMapping("/{id}/prix-final")

@@ -1,7 +1,10 @@
 package com.gestion_voiture.gestionnaire.pattern.decorator;
 
+import org.springframework.stereotype.Component;
+
 import com.gestion_voiture.gestionnaire.models.Option;
 
+@Component
 public class OptionDecorateur extends VehiculeDecorateur {
     private final Option option;
 

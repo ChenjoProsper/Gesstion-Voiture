@@ -17,7 +17,8 @@ public abstract class Document {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nom;
+    private String titre;
+    private String contenu;
     private LocalDateTime dateCreation;
 
     public abstract String genereContenu();
