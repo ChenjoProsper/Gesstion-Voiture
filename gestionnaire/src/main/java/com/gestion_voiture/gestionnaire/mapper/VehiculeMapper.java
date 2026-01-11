@@ -2,15 +2,22 @@ package com.gestion_voiture.gestionnaire.mapper;
 import com.gestion_voiture.gestionnaire.dto.VehiculeResultDTO;
 import com.gestion_voiture.gestionnaire.dto.VehiculeDTO;
 import com.gestion_voiture.gestionnaire.models.*;
+import com.gestion_voiture.gestionnaire.pattern.abstractfactory.FabriqueVehiculeElectrique;
+import com.gestion_voiture.gestionnaire.pattern.abstractfactory.FabriqueVehiculeEssence;
+
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class VehiculeMapper {
 
-    // Mapping de l'entité vers le ResultDTO
+    private final FabriqueVehiculeElectrique fabriqueVehiculeElectrique;
+    private final FabriqueVehiculeEssence fabriqueVehiculeEssence;
 
     public VehiculeResultDTO toDto(Vehicule vehicule){
-
+        if (vehicule == null) return null;
         VehiculeResultDTO vehiculeResultDTO = new VehiculeResultDTO();
         vehiculeResultDTO.setId(vehicule.getId());
         vehiculeResultDTO.setReference(vehicule.getReference());
@@ -28,10 +35,10 @@ public class VehiculeMapper {
 
         Vehicule vehicule = switch (dto.getTypeVehicule()) {
 
-            case AUTO_ELECTRIQUE      -> new AutoElectrique();
-            case AUTO_ESSENCE         -> new AutoEssence();
-            case SCOOTER_ELECTRIQUE   -> new ScooterElectrique();
-            case SCOOTER_ESSENCE      -> new ScooterEssence();
+            case AUTO_ELECTRIQUE      -> fabriqueVehiculeElectrique.creerAutomobile();
+            case AUTO_ESSENCE         -> fabriqueVehiculeEssence.creerAutomobile();
+            case SCOOTER_ELECTRIQUE   -> fabriqueVehiculeElectrique.creerScooter();
+            case SCOOTER_ESSENCE      -> fabriqueVehiculeEssence.creerScooter();
         };
 
         vehicule.setReference(dto.getReference());

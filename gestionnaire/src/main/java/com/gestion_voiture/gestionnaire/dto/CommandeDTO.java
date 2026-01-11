@@ -15,7 +15,6 @@ public class CommandeDTO {
     @NotNull
     private TypePaiement typePaiement;
 
-    private Double tauxInteret;
     private String paysLivraison;
 }
 

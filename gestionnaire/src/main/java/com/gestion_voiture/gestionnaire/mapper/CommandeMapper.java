@@ -5,9 +5,10 @@ import org.springframework.stereotype.Component;
 import com.gestion_voiture.gestionnaire.dto.CommandeDTO;
 import com.gestion_voiture.gestionnaire.dto.CommandeResultDTO;
 import com.gestion_voiture.gestionnaire.models.Commande;
-import com.gestion_voiture.gestionnaire.models.CommandeComptant;
 import com.gestion_voiture.gestionnaire.models.CommandeCredit;
 import com.gestion_voiture.gestionnaire.models.Enum.TypePaiement;
+import com.gestion_voiture.gestionnaire.pattern.factory.CommandeComptantCreator;
+import com.gestion_voiture.gestionnaire.pattern.factory.CommandeCreditCreator;
 import com.gestion_voiture.gestionnaire.services.ClientService;
 
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,8 @@ public class CommandeMapper {
 
     private final ClientService clientService;
     private final ClientMapper clientMapper;
+    private final CommandeCreditCreator commandeCreditCreator;
+    private final CommandeComptantCreator commandeComptantCreator;
 
     public CommandeResultDTO toDto(Commande commande) {
 
@@ -41,16 +44,9 @@ public class CommandeMapper {
 
         Commande commande = switch (dto.getTypePaiement()) {
 
-            case CREDIT -> {
-                if (dto.getTauxInteret() == null) {
-                    throw new IllegalArgumentException("Le taux d’intérêt est obligatoire pour une commande à crédit");
-                }
-                CommandeCredit cc = new CommandeCredit();
-                cc.setTauxInteret(dto.getTauxInteret());
-                yield cc;
-            }
+            case CREDIT -> commandeCreditCreator.creerCommande();
 
-            case COMPTANT -> new CommandeComptant();
+            case COMPTANT -> commandeComptantCreator.creerCommande();
         };
 
         commande.setClient(clientService.findById(dto.getClientId()));

@@ -9,12 +9,10 @@ import org.springframework.stereotype.Service;
 import com.gestion_voiture.gestionnaire.dto.VehiculeDTO;
 import com.gestion_voiture.gestionnaire.dto.VehiculeResultDTO;
 import com.gestion_voiture.gestionnaire.mapper.VehiculeMapper;
-import com.gestion_voiture.gestionnaire.models.AutoElectrique;
-import com.gestion_voiture.gestionnaire.models.AutoEssence;
 import com.gestion_voiture.gestionnaire.models.Option;
-import com.gestion_voiture.gestionnaire.models.ScooterElectrique;
-import com.gestion_voiture.gestionnaire.models.ScooterEssence;
 import com.gestion_voiture.gestionnaire.models.Vehicule;
+import com.gestion_voiture.gestionnaire.pattern.abstractfactory.FabriqueVehiculeElectrique;
+import com.gestion_voiture.gestionnaire.pattern.abstractfactory.FabriqueVehiculeEssence;
 import com.gestion_voiture.gestionnaire.pattern.decorator.ComposantVehicule;
 import com.gestion_voiture.gestionnaire.pattern.decorator.OptionDecorateur;
 import com.gestion_voiture.gestionnaire.repository.OptionRepository;
@@ -30,6 +28,8 @@ public class VehiculeServiceImpl implements VehiculeService {
     private final VehiculeRepository vehiculeRepository;
     private final VehiculeMapper vehiculeMapper;
     private final OptionRepository optionRepository;
+    private final FabriqueVehiculeElectrique fabriqueVehiculeElectrique;
+    private final FabriqueVehiculeEssence fabriqueVehiculeEssence;
 
     @Override
     public List<VehiculeResultDTO> listerCatalogue() {
@@ -49,10 +49,10 @@ public class VehiculeServiceImpl implements VehiculeService {
         
         Vehicule v = switch (dto.getTypeVehicule()) {
 
-            case AUTO_ELECTRIQUE      -> new AutoElectrique();
-            case AUTO_ESSENCE         -> new AutoEssence();
-            case SCOOTER_ELECTRIQUE   -> new ScooterElectrique();
-            case SCOOTER_ESSENCE      -> new ScooterEssence();
+            case AUTO_ELECTRIQUE      -> fabriqueVehiculeElectrique.creerAutomobile();
+            case AUTO_ESSENCE         -> fabriqueVehiculeEssence.creerAutomobile();
+            case SCOOTER_ELECTRIQUE   -> fabriqueVehiculeElectrique.creerScooter();
+            case SCOOTER_ESSENCE      -> fabriqueVehiculeEssence.creerScooter();
         };
         
         v.setMarque(dto.getMarque());
