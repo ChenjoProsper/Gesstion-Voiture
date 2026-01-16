@@ -14,7 +14,8 @@ public class VehiculeDTO {
     private Integer cylindree;
     private Integer nombrePortes;
     private Double espaceCoffre;
-
+    private String imageData; // Image en base64 lors de la création
+    private String imageLink; // Lien/URL vers l'image (retourné par le serveur)
     @NotNull
     private TypeVehicule typeVehicule;
 }

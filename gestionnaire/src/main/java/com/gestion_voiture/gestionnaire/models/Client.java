@@ -12,16 +12,17 @@ import lombok.Data;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Client {
-    @Id 
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nom;
     private String email;
     private String telephone;
+    private String password;
+    private boolean isAuthenticated;
 
     public void ajouteFiliale(Client filiale) {
         throw new UnsupportedOperationException("Non applicable pour ce type de client");
     }
-  
 
 }

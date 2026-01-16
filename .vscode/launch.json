@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-GestionnaireApplication<gestionnaire>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.gestion_voiture.gestionnaire.GestionnaireApplication",
+      "projectName": "gestionnaire",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

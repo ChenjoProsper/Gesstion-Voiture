@@ -25,6 +25,10 @@ public abstract class Vehicule implements ComposantVehicule {
     private String modele;
     private Double prixBase;
 
+    private String imageLink; // Lien/URL vers l'image du véhicule
+
+    private Double pourcentageSolde; // Pourcentage de réduction appliqué
+
     @ManyToMany
     private List<Option> options;
 
