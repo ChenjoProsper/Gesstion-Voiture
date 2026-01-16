@@ -1,5 +1,6 @@
 package com.gestion_voiture.gestionnaire.models;
 
+<<<<<<< HEAD
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
@@ -22,4 +23,10 @@ public abstract class Document {
     private LocalDateTime dateCreation;
 
     public abstract String genereContenu();
+=======
+public interface Document {
+    void setContenu(String contenu);
+    String dessiner();
+    void imprimer(); 
+>>>>>>> origin/Beautrel
 }
