@@ -9,6 +9,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
 import lombok.Data;
 
 @Entity
@@ -23,6 +25,10 @@ public abstract class Document {
     @Column(columnDefinition = "TEXT")
     private String contenu;
     private LocalDateTime dateCreation;
+    
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
 
     public abstract String genereContenu();
 }

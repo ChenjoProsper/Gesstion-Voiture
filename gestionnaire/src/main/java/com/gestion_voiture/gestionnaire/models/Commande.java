@@ -48,7 +48,7 @@ public abstract class Commande implements CommandeSujet {
     @JoinTable(
         name = "commande_vehicules",
         joinColumns = @JoinColumn(name = "commande_id"),
-        inverseJoinColumns = @JoinColumn(name = "vehicule_id")
+        inverseJoinColumns = @JoinColumn(name = "vehicules_id")
     )
     private List<Vehicule> vehicules = new ArrayList<>();
 
