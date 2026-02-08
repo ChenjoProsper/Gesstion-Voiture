@@ -25,6 +25,14 @@ public class CommandeController {
         return commandeService.passerCommande(dto);
     }
 
+    @PostMapping("/from-panier/{clientId}")
+    @Operation(summary = "Passer commande depuis le panier d'un client")
+    public CommandeResultDTO passerDepuisPanier(@PathVariable Long clientId,
+                                               @RequestParam(required = false, defaultValue = "COMPTANT") String payment,
+                                               @RequestParam(required = false, defaultValue = "Cameroun") String pays) {
+        return commandeService.passerCommandeDepuisPanier(clientId, payment, pays);
+    }
+
     @PutMapping("/{id}/valider")
     @Operation(summary = "valider une commande (passe à l'état VALIDE et génère la liasse de documents)")
     public String valider(@PathVariable Long id) {

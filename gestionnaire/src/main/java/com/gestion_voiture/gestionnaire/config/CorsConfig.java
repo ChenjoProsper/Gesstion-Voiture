@@ -18,7 +18,8 @@ public class CorsConfig {
                 configuration.setAllowedOriginPatterns(Arrays.asList(
                                 "http://localhost:*",
                                 "http://10.17.211:8080",
-                                "http://172.22.0.1:8080"));
+                                "http://172.22.0.1:8080",
+                                "http://localhost:8080"));
 
                 configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
                 configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "X-Requested-With",

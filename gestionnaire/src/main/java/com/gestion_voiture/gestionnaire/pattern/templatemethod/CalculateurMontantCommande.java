@@ -2,10 +2,7 @@ package com.gestion_voiture.gestionnaire.pattern.templatemethod;
 
 import com.gestion_voiture.gestionnaire.models.Commande;
 
-/**
- * Pattern Template Method pour calculer le montant final d'une commande
- * Définit l'algorithme général, les sous-classes implémentent les étapes spécifiques
- */
+
 public abstract class CalculateurMontantCommande {
     
     /**
@@ -41,12 +38,12 @@ public abstract class CalculateurMontantCommande {
     }
     
     /**
-     * Étape 2 : Appliquer les remises (à surcharger dans les sous-classes)
+     * Étape 2 : Appliquer les remises 
      */
     protected abstract Double appliquerRemises(Double montantBase, Commande commande);
     
     /**
-     * Étape 3 : Appliquer les frais spécifiques (à surcharger dans les sous-classes)
+     * Étape 3 : Appliquer les frais spécifiques 
      */
     protected abstract Double appliquerFraisSpecifiques(Double montant, Commande commande);
     

@@ -5,9 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 import com.gestion_voiture.gestionnaire.models.Vehicule;
 
-/**
- * Implémentation concrète du catalogue de véhicules
- */
+
 @Component
 public class CatalogueVehicules implements VehiculeCatalogue {
     private List<Vehicule> vehicules = new ArrayList<>();

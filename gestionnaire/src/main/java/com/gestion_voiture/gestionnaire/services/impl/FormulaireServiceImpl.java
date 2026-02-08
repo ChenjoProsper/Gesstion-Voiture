@@ -20,10 +20,9 @@ public class FormulaireServiceImpl implements FormulaireService {
 
     @Override
     public String genererFormulaire(FormulaireRequestDTO dto) {
-        // 1. Choisir l'implémentation (le format)
+        
         var impl = dto.getFormat().equalsIgnoreCase("html") ? htmlImpl : widgetImpl;
 
-        // 2. Créer le formulaire métier (l'abstraction) avec l'implémentation choisie
         Formulaire formulaire;
         if (dto.getTypeFormulaire().equalsIgnoreCase("immatriculation")) {
             formulaire = new FormulaireImmatriculation(impl);
@@ -31,7 +30,6 @@ public class FormulaireServiceImpl implements FormulaireService {
             return "Type de formulaire inconnu";
         }
 
-        // 3. Utiliser le formulaire
         formulaire.afficher();
         return "Formulaire " + dto.getTypeFormulaire() + " généré au format " + dto.getFormat();
     }

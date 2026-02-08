@@ -12,6 +12,7 @@ import com.gestion_voiture.gestionnaire.dto.CommandeResultDTO;
 public interface CommandeService {
     
     public CommandeResultDTO passerCommande(CommandeDTO dto);
+    public CommandeResultDTO passerCommandeDepuisPanier(Long clientId, String typePaiement, String paysLivraison);
     public Double calculerPrixFinal(Long commandeId, Map<Long, List<Long>> optionsParVehicule);
     public void validerCommande(Long commandeId);
 }

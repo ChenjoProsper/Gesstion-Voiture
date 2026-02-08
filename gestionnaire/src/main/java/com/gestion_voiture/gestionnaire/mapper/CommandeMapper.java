@@ -21,6 +21,7 @@ public class CommandeMapper {
     private final ClientMapper clientMapper;
     private final CommandeCreditCreator commandeCreditCreator;
     private final CommandeComptantCreator commandeComptantCreator;
+    private final VehiculeMapper vehiculeMapper;
 
     public CommandeResultDTO toDto(Commande commande) {
 
@@ -28,8 +29,12 @@ public class CommandeMapper {
         dto.setId(commande.getId());
         dto.setEtat(commande.getEtat().name());
         dto.setDateCommande(commande.getDateCommande());
+        dto.setMontantTotal(commande.getMontantTotal());
         dto.setClient(clientMapper.toDto(commande.getClient()));
         dto.setPaysLivraison(commande.getPaysLivraison());
+        if (commande.getVehicules() != null) {
+            dto.setVehicules(commande.getVehicules().stream().map(v -> vehiculeMapper.toDto(v)).toList());
+        }
         if (commande instanceof CommandeCredit credit) {
             dto.setTypePaiement(TypePaiement.CREDIT);
             dto.setTauxInteret(credit.getTauxInteret());
